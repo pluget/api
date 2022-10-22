@@ -11,7 +11,7 @@ You can generate a fully featured client library
 for basically any programming language with the help of [openapi-generator](https://github.com/OpenAPITools/openapi-generator#3---usage).
 Its easy as well, like shown below (generates C#/csharp client library):
 1. Download the openapi-generator-cli.jar from [here](https://github.com/OpenAPITools/openapi-generator#13---download-jar).
-2. Execute this command: `java -jar openapi-generator-cli.jar generate -i https://raw.githubusercontent.com/pluget/rest-api/main/pluget.yaml -g csharp -o openapi-generated/client/pluget/java` (for all supported languages see [here](https://openapi-generator.tech/docs/generators/)). 
+2. Execute this command: `java -jar openapi-generator-cli.jar generate -i https://raw.githubusercontent.com/pluget/rest-api/main/pluget.yaml -g csharp -o openapi-generated/client/pluget/csharp` (for all supported languages see [here](https://openapi-generator.tech/docs/generators/)). 
 3. Copy the generated code into your project.
 
 ### Design (API endpoints)
