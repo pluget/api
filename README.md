@@ -11,7 +11,7 @@ You can generate a fully featured client library
 for basically any programming language with the help of [openapi-generator](https://github.com/OpenAPITools/openapi-generator#3---usage).
 Its easy as well, like shown below (generates Java client library):
 
-> ```java -jar openapi-generator-cli.jar generate -i https://raw.githubusercontent.com/pluget/rest-api/main/pluget.yaml -g java -o openapi-generated/client/pluget/java```
+`java -jar openapi-generator-cli.jar generate -i https://raw.githubusercontent.com/pluget/rest-api/main/pluget.yaml -g java -o openapi-generated/client/pluget/java`
 
 ### Design (API endpoints)
 
