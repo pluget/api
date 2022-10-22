@@ -1,0 +1,273 @@
+openapi: 3.0.0
+servers:
+  - url: 'http://api.pluget.net/v1'
+info:
+  description: >-
+    Pluget REST API.
+
+    For this sample, you can use the api key `special-key` to test the
+    authorization filters.
+  version: 1.0.0
+  title: Pluget
+  termsOfService: 'http://pluget.net/terms/'
+  contact:
+    email: osiris_support@pm.me
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: all
+    description: >-
+      Description: Returns all the data (name, data, versions). One page could
+      show a maximum of 20 plugins.
+
+      Example: https://api.pluget.net/v1/all?pageID=0&pluginsShown=5
+
+      Optional params: pageID (default 0), pluginsShown (max 20, default 10)
+    externalDocs:
+      description: ''
+      url: 'http://TODO'
+  - name: names
+    description: >-
+      Description: Retuns all names.
+
+      Example: https://api.pluget.net/v1/names?pageID=0&pluginsShown=5
+
+      Optional params: pageID (default 0), pluginsShown (max 4294967295, default
+      1000)
+    externalDocs:
+      url: 'http://TODO'
+  - name: data
+    description: |-
+      Description: Returns all the plugins data (without versions).
+      Example: https://api.pluget.net/v1/data?pageID=0&pluginsShown=5
+      Optional params: pageID (default 0), pluginsShown (max 20, default 10)
+    externalDocs:
+      description: Find out more about our store
+      url: 'http://TODO'
+  - name: versions
+    externalDocs:
+      url: 'http://TODO'
+    description: |-
+      Description: Return all the plugins versions (without data).
+      Example: https://api.pluget.net/v1/versions?pageID=0&pluginsShown=5
+      Optional params: pageID (default 0), pluginsShown (max 20, default 10)
+  - name: find
+    externalDocs:
+      url: 'http://TODO'
+    description: >-
+      Description: Returns an array containing only the objects that match the
+      query.
+
+      Examples:
+
+      https://api.pluget.net/v1/find?author=queryString
+
+      https://api.pluget.net/v1/find?name=queryString
+
+      https://api.pluget.net/v1/find?pgid=queryString
+
+      https://api.pluget.net/v1/find?name=queryString&author=queryString
+
+      Required params (at least one): author, name, pgid
+paths:
+  /all:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        - name: pageID
+          in: query
+          required: false
+          schema:
+            type: string
+            default: '0'
+        - name: pluginsShown
+          in: query
+          required: false
+          schema:
+            type: string
+            default: '10'
+          allowEmptyValue: false
+      operationId: ''
+      responses:
+        default:
+          description: Default response
+externalDocs:
+  description: ''
+  url: 'https://pluget.net/swagger'
+components:
+  schemas:
+    Plugin:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        petId:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+        shipDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+          description: Order Status
+          enum:
+            - placed
+            - approved
+            - delivered
+        complete:
+          type: boolean
+          default: false
+  requestBodies:
+    Pet:
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - name
+              - photoUrls
+            properties:
+              id:
+                type: integer
+                format: int64
+              category:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  name:
+                    type: string
+                xml:
+                  name: Category
+              name:
+                type: string
+                example: doggie
+              photoUrls:
+                type: array
+                xml:
+                  name: photoUrl
+                  wrapped: true
+                items:
+                  type: string
+              tags:
+                type: array
+                xml:
+                  name: tag
+                  wrapped: true
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int64
+                    name:
+                      type: string
+                  xml:
+                    name: Tag
+              status:
+                type: string
+                description: pet status in the store
+                enum:
+                  - available
+                  - pending
+                  - sold
+            xml:
+              name: Pet
+        application/xml:
+          schema:
+            type: object
+            required:
+              - name
+              - photoUrls
+            properties:
+              id:
+                type: integer
+                format: int64
+              category:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  name:
+                    type: string
+                xml:
+                  name: Category
+              name:
+                type: string
+                example: doggie
+              photoUrls:
+                type: array
+                xml:
+                  name: photoUrl
+                  wrapped: true
+                items:
+                  type: string
+              tags:
+                type: array
+                xml:
+                  name: tag
+                  wrapped: true
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int64
+                    name:
+                      type: string
+                  xml:
+                    name: Tag
+              status:
+                type: string
+                description: pet status in the store
+                enum:
+                  - available
+                  - pending
+                  - sold
+            xml:
+              name: Pet
+      description: Pet object that needs to be added to the store
+      required: true
+    UserArray:
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int64
+                username:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                phone:
+                  type: string
+                userStatus:
+                  type: integer
+                  format: int32
+                  description: User Status
+              xml:
+                name: User
+      description: List of user object
+      required: true
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
+security: []
