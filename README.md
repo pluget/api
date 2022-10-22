@@ -3,7 +3,7 @@ Pluget REST-API
 
 ## Specification
 The spefication is developed in the openapi format and can be found inside the `pluget.yaml` file.
-You can also edit it more convenietly over an GUI by uploading it to
+You can also edit it more conveniently over an GUI by uploading it to
 [https://mermade.github.io/openapi-gui/#](https://mermade.github.io/openapi-gui/#).
 
 ## Client libraries
