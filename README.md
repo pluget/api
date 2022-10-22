@@ -1,6 +1,20 @@
 # rest-api
 Pluget REST-API
 
+## Specification
+The spefication is developed in the openapi format and can be found inside the `openapi.yaml` file.
+You can also edit it more convenietly over an GUI by uploading it to
+[https://mermade.github.io/openapi-gui/#](https://mermade.github.io/openapi-gui/#).
+
+## Client libraries
+You can generate a fully featured client library 
+for basically any programming language with the help of [openapi-generator](https://github.com/OpenAPITools/openapi-generator#3---usage).
+Its easy as well, like shown below (generates Java client library):
+
+> ```sh
+> java -jar openapi-generator-cli.jar generate -i https://raw.githubusercontent.com/pluget/rest-api/main/pluget.yaml -g java -o openapi-generated/client/pluget/java
+> ```
+
 ### Design (API endpoints)
 
 #### https://api.pluget.net/v1
